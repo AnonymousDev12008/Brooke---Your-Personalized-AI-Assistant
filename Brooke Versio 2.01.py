@@ -25,13 +25,13 @@ def speak(audio):
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour>=0 and hour<12:
-        speak("Good Morning Coder!")
+        speak("Good Morning User!")
 
     elif hour>=12 and hour<18:
-        speak("Good Afternoon Coder!")   
+        speak("Good Afternoon User!")   
 
     else:
-        speak("Good Evening Coder!")  
+        speak("Good Evening User!")  
 
     speak("I am Brooke Version 2 point 0 1 . Please tell me how may I help you")
      
@@ -60,8 +60,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('psaimanikantha22@gmail.com', 'Mani@123')
-    server.sendmail('psaimanikantha22@gmail.com', to, content)
+    server.login('youremail@gmail.com', 'password')
+    server.sendmail('youremail@gmail.com', to, content)
     server.close()
 
 if __name__ == "__main__":
@@ -102,7 +102,7 @@ if __name__ == "__main__":
             speak("Speak Soon") 
             
         elif "who am i" in query :
-              speak ("I Exactly Dont know who you are , But this is Sir Manikantha's Dev Account")  
+              speak ("I Exactly Dont know who you are , But this is Client Account")  
                
             
         elif 'play music' in query:
@@ -171,9 +171,6 @@ if __name__ == "__main__":
             
         elif "who are you" in query:
             speak("I Am Brooke Version two point 0 1 , An Artificial Intellegence Programme Created Using Python 3.11")
-            
-        elif "sk" in query:
-            speak("Sai Kavitha, Am i Right")
         
         elif 'joke'  in query:
             speak("Joke incoming Sir")
@@ -184,7 +181,7 @@ if __name__ == "__main__":
             try:
                 speak("What should I say?")
                 content = takeCommand()
-                to = "arkadius980@gmail.com"    
+                to = "YourEmail@gmail.com"    
                 sendEmail(to, content)
                 speak("Email has been sent!")
             except Exception as e:
