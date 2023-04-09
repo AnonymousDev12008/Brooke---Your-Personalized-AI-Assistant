@@ -56,6 +56,8 @@ def takeCommand():
         return "None"
     return query
 
+#Defining the SendMail Function Using Smptser er. 
+
 def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
@@ -113,46 +115,48 @@ if __name__ == "__main__":
             
         elif "i am sad" in query:
             speak("Some Times Speaking With Friends Or Family Can make You Feel Better")
-      
+  
+#These are Queries For Open Websites or Web adresses. 
+    
         elif "chrome" in query:
              query = query.replace("where is", "")
              location = query
-             speak("User asked to Open")
+             speak("Client asked to Open")
              speak(location)
              webbrowser.open("https://www.google.nl ")  
              
         elif "youtube" in query:
              query = query.replace("where is", "")
              location = query
-             speak("User asked to Open")
+             speak("Client asked to Open")
              speak(location)
              webbrowser.open("https://www.youtube.com ") 
              
         elif "discord" in query:
              query = query.replace("where is", "")
              location = query
-             speak("User asked to Open")
+             speak("Client asked to Open")
              speak(location)
              webbrowser.open("https://www.spotify.app")    
              
         elif "stackoverflow" in query:
              query = query.replace("where is", "")
              location = query
-             speak("User asked to Open")
+             speak("Client asked to Open")
              speak(location)
              webbrowser.open("https://www.stackoverflow.com ")  
              
         elif "github" in query:
              query = query.replace("where is", "")
              location = query
-             speak("User asked to Open")
+             speak("Client asked to Open")
              speak(location)
              webbrowser.open("https://www.github.com ")  
 
         elif "spotify" in query:
              query = query.replace("where is", "")
              location = query
-             speak("User asked to Open")
+             speak("Client asked to Open")
              speak(location)
              webbrowser.open("https://www.spotify.com ") 
 
@@ -186,7 +190,7 @@ if __name__ == "__main__":
                 speak("Email has been sent!")
             except Exception as e:
                 print(e)
-                speak("Sorry my Dear Coder. I am not able to send this email")
+                speak("Sorry my Dear Client. I am not able to send this email")
                 
                 
                 #***************************************** The End **************************************#   
