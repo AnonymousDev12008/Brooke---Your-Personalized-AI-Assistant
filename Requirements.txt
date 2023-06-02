@@ -3,19 +3,17 @@ Requirements  :
 
 #The Required Modules To Run This AI Are :
 
-#1 SpeechRecognition
-#2 Json
-#3 Datetime
-#4 Wikepedia
-#5 Webbrowser
-#6 smtplib
-#7 pyjokes
-#8 requests
-#9 turtle
-#10 sketchpy
-#11 os
+pyttsx3==2.90
+SpeechRecognition==3.8.1
+wikipedia==1.4.0
+pyjokes==1.0.0
+ecapture==0.3
+sketchpy==0.1.2
+winshell==0.6
+requests==2.26.0
+
 
 #You Can Customize The queries  As Per Your Choice And Convinience ....... 
 
-# (For Any Further Queries Or Issues Contact Us Through Our Github Page AnonymousDev12008 )
+# (For Any Further Queries Or Issues Contact Us Through Our Github Page Coder12008 )
 
