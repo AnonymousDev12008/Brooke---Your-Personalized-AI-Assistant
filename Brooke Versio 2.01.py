@@ -1,3 +1,4 @@
+from winreg import QueryValue
 import pyttsx3 #pip install pyttsx3
 import speech_recognition as sr #pip install speechRecognition
 import datetime
@@ -6,10 +7,14 @@ import webbrowser
 import os
 import smtplib
 import pyjokes
-import requests
-import json
-import turtle
+import os
+import random
+import ecapture
 from sketchpy import library as lib
+import winshell
+import subprocess
+import requests
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -33,7 +38,7 @@ def wishMe():
     else:
         speak("Good Evening User!")  
 
-    speak("I am Brooke Version 2 point 0 1 . Please tell me how may I help you")
+    speak("I am Brooke Version 3 point 0 1. Please tell me how may I help you")
      
 def takeCommand():
     #It takes microphone input from the user and returns string output
@@ -51,8 +56,8 @@ def takeCommand():
 
     except Exception as e:
         # print(e)    
-        print("Say that again please...") 
-        speak("Say that again please...") 
+        print("I Don't Know That Could You Please Repeat It ........") 
+        speak("I Don't Know That Could You Please Repeat It ........") 
         return "None"
     return query
 
@@ -62,8 +67,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
-    server.login('youremail@gmail.com', 'password')
-    server.sendmail('youremail@gmail.com', to, content)
+    server.login('yourmail@gmail.com', 'password')
+    server.sendmail('yourmail@gmail.com', to, content)
     server.close()
 
 if __name__ == "__main__":
@@ -81,11 +86,15 @@ if __name__ == "__main__":
             print(results)
             speak(results)
             
+        elif 'say hi to' in query:
+            person = query.split("to", 1)[1].strip()
+            speak(f"Hi {person}! How are you?")
+            
         elif "I love you" in query:
             speak("Aw You Just Flatterd Me") or speak ('Love You Too') or speak(" Oh What A Coincidence I Love My Self") ;
             os.system("Love Symbol.py")
   
-        elif 'the time' in query:
+        elif 'time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")    
             speak(f"Sir, the time is {strTime}")
             
@@ -93,9 +102,18 @@ if __name__ == "__main__":
             speak("Thanks for giving me your time")
             exit()
             
+    
+    
+       
         elif 'how are you' in query:
              speak("I am fine, Thank you")
              speak("How are you, Coder")
+             
+        elif 'Whats Your Current Version' in query or 'What Is Your Latest Version' in query:
+             speak("My Current Version Is 3 point 0")
+             
+        elif 'Who Created You' in query or 'How Were You Made' in query:
+             speak("I Came To Existence Beacause Of Sir Manikantha , I Was Programmed In Python")
              
         elif 'fine' in query or "good" in query:
                 speak("It's good to know that your fine")
@@ -106,17 +124,19 @@ if __name__ == "__main__":
         elif "who am i" in query :
               speak ("I Exactly Dont know who you are , But this is Client Account")  
                
-            
-        elif 'play music' in query:
-            music_dir = "C:\\Users\manik\OneDrive\Documents\Music"
-            songs = os.listdir(music_dir)
-            print(songs)    
-            os.startfile(os.path.join(music_dir, songs[0]))
-            
+        
         elif "i am sad" in query:
             speak("Some Times Speaking With Friends Or Family Can make You Feel Better")
   
-#These are Queries For Open Websites or Web adresses. 
+#Logic For Opening Websites or Web adresses . 
+
+
+        elif "open portfolio" in query:
+             query = query.replace("where is", "")
+             location = query
+             speak("Client asked to Open")
+             speak(location)
+             webbrowser.open("https://psaimanikantha22.wixsite.com/mysite")  
     
         elif "chrome" in query:
              query = query.replace("where is", "")
@@ -133,11 +153,12 @@ if __name__ == "__main__":
              webbrowser.open("https://www.youtube.com ") 
              
         elif "discord" in query:
+             speak("Discord Is Up Sir , Chat Seamlessly ")
              query = query.replace("where is", "")
              location = query
              speak("Client asked to Open")
              speak(location)
-             webbrowser.open("https://www.spotify.app")    
+             webbrowser.open("https://www.discord.com")    
              
         elif "stackoverflow" in query:
              query = query.replace("where is", "")
@@ -147,18 +168,14 @@ if __name__ == "__main__":
              webbrowser.open("https://www.stackoverflow.com ")  
              
         elif "github" in query:
+             speak("here Comes In Github")
              query = query.replace("where is", "")
              location = query
              speak("Client asked to Open")
              speak(location)
              webbrowser.open("https://www.github.com ")  
 
-        elif "spotify" in query:
-             query = query.replace("where is", "")
-             location = query
-             speak("Client asked to Open")
-             speak(location)
-             webbrowser.open("https://www.spotify.com ") 
+       
 
         elif "say hello to " in query:
             command=query.replace("say hello to" ,"")
@@ -169,9 +186,6 @@ if __name__ == "__main__":
             query = query.replace("search", "")
             query = query.replace("play", "")         
             webbrowser.open(query)
-
-        elif "who created you" in query:
-            speak("I Was created By a Intellegent programmer Mr. Manikantha.  I Was Created in Python 3.11")
             
         elif "who are you" in query:
             speak("I Am Brooke Version two point 0 1 , An Artificial Intellegence Programme Created Using Python 3.11")
@@ -180,19 +194,115 @@ if __name__ == "__main__":
             speak("Joke incoming Sir")
             speak(pyjokes.get_joke())
             
+       
+        elif "write a note" in query:
+            speak("What should i write, sir")
+            note = takeCommand()
+            file = open('Brooke.txt', 'w')
+            speak("Sir, Should i include date and time")
+            snfm = takeCommand()
+            if 'yes' in snfm or 'sure' in snfm:
+                strTime = datetime.datetime.now().strftime("% H:% M:% S")
+                file.write(strTime)
+                file.write(" :- ")
+                file.write(note)
+            else:
+                file.write(note)
+                
+         #New Update Commands        
+        elif "show note" in query:
+            speak("Showing Notes")
+            file = open("Brooke.txt", "r")
+            print(file.read())
+            speak(file.read(6)) 
+            
+        elif 'empty recycle bin' in query:
+            winshell.recycle_bin().empty(confirm = False, show_progress = False, sound = True)
+            speak("Recycle Bin Recycled")
+            
+        elif "camera" in query or "take a photo" in query:
+            ec = ecapture
+            ec.capture(0, "Brooke Camera ", "img.jpg")
+            
+        elif 'shutdown system' in query:
+                speak("Hold On a Sec ! Your system is on its way to shut down")
+                subprocess.call('shutdown / p /f')
+ 
+        elif "where is" in query:
+            query = query.replace("where is", "")
+            location = query
+            speak("User asked to Locate")
+            speak(location)
+            webbrowser.open("https://www.google.nl / maps / place/" + location + "") 
+            
+            
+        elif "hit" in query:
+            speak('Iniatiating The Hack Control')
+            
+        
+        elif "play music" in query:
+           speak("Sure, please provide the song name.")
+           song_name = takeCommand()
+           speak(f"Okay, playing {song_name} on Spotify.")
+           webbrowser.open(f"https://open.spotify.com/search/{song_name}")
+           
+        elif 'tell me a riddle' in query:
+              riddles = [
+        "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+        "What has keys but can't open locks?",
+        "What has a heart that doesn't beat?",
+        "I am taken from a mine, and shut up in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?"
+        # Add more riddles
+
+    ]
+              random_riddle = random.choice(riddles)
+              speak("Sure! Here's a riddle for you:")
+              speak(random_riddle)
+              
+        if 'open calculator' in query:
+              speak("Opening calculator...")
+              os.system("calc")
+
+ 
+
+def set_reminder(reminder_time, reminder_message):
+    while True:
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        if current_time == reminder_time:
+            print("Reminder:", reminder_message)
+            # You can add your desired actions when the reminder triggers, such as displaying a message or playing a sound.
+            break
+        time=time
+        time.sleep(1)
+
+# ...
+
+    if 'set a reminder' in query:
+       speak("Sure, please provide the time for the reminder.")
+    reminder_time = takeCommand()
     
-        elif 'email to ' in query:
-            try:
-                speak("What should I say?")
-                content = takeCommand()
-                to = "YourEmail@gmail.com"    
-                sendEmail(to, content)
-                speak("Email has been sent!")
-            except Exception as e:
-                print(e)
-                speak("Sorry my Dear Client. I am not able to send this email")
+    speak("What would you like to be reminded of?")
+    reminder_message = takeCommand()
+
+    # Convert the input time to a valid datetime format
+    try:
+        reminder_time = datetime.datetime.strptime(reminder_time, "%H:%M:%S").strftime("%H:%M:%S")
+        set_reminder(reminder_time, reminder_message)
+    except ValueError:
+        speak("Invalid time format. Please try again.")
+        
+    if "don't listen" in query or "stop listening" in query:
+            speak("for how much time you want to stop Brooke from listening commands")
+            a = int(takeCommand())
+            time.sleep(a)
+            print(a)
+            
+    elif "restart" in query:
+            subprocess.call(["shutdown", "/r"])
+             
+
+
                 
                 
                 #***************************************** The End **************************************#   
-                
-                
+            
