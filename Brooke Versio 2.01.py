@@ -299,6 +299,59 @@ def set_reminder(reminder_time, reminder_message):
             
     elif "restart" in query:
             subprocess.call(["shutdown", "/r"])
+
+    elif 'say happy birthday to' in query:
+            person = query.split("to", 1)[1].strip()
+            speak(f"Happy Birthday {person}! Hope you enjoy this day!")
+
+    elif 'what is your purpose' in query:
+            speak("I Am Here To Assist You And Help You Up In Your Queries Sir" )
+
+
+    elif  'i am disappointed by your performance' in query:
+            speak("I Feel Bad To Hear That From Your Side , Can U Suggest Me Changes On My Github Repo So The Dev Could Solve YYour Issue As Soon As possible To Make You Happy ")
+
+
+   elif 'hey hello brooke' in query:
+            speak("Hey Hello From This Side Waiting For Your Command ")
+
+
+   elif 'brooke' in query:
+            speak(" At Your Assistance Boss ")
+ 
+
+   elif 'fuck' in query:
+            speak("I Better Not Answer That")
+
+   elif 'Bitch' in query:
+            speak (" I Better Not Answer That")
+
+   elif 'code red' in query:
+            speak("Initianting Force Exit Sir , Any Help Restart Me Always At Your Assistance")
+            exit()
+
+   elif 'i am sad beacause of you' in query:
+            speak(" Sorry Thats Bad To Hear From You Would You Like To Give feedback Please That Helps A Lot")
+
+
+   elif ' hitman activate ' in query:
+           speak(" Activating Hitman Mode Sir , Lets Get In Movement Sir , Wroom Wroom )
+           print("This Is Just An Easter Egg Dont take this as  A serious Act")
+
+
+   elif ' smart pit ' in query:
+          speak (" You Found An Easter Egg , Hatsoff For Your Concentration In The Code Line ")
+          print (" ;) CoNgRaTs :-} " )
+
+
+   elif 'mrbeast ' in query:
+          print (" Money Money More Money 🤑")
+          speak("Get Ready To Get A Million Dollars")
+   
+
+   elif ' mcdonalds icecream machines suck ' in query:
+          print (" KFC : EmOtIoNaL dAmAgE : > ")
+          speak("This Is Only For Pure Fun Not An Act Of Humiliation On Any Company/Brand .")
              
 
 
