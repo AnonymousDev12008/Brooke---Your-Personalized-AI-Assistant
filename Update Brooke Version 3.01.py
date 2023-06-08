@@ -14,6 +14,10 @@ from sketchpy import library as lib
 import winshell
 import subprocess
 import requests
+from PIL import Image
+import requests
+import io
+from clarifai.rest import ClarifaiApp
 
 
 engine = pyttsx3.init('sapi5')
@@ -101,6 +105,19 @@ if __name__ == "__main__":
         elif 'exit' in query:
             speak("Thanks for giving me your time")
             exit()
+        
+        #Now Here ou Need To Customise This Snippet With The Recivers Name And Mail Adress For Multiple pls Jst See The inetndation Properly And Copy ANd Paste
+           
+        elif 'email to Test' in query:
+            try:
+                speak("What should I say?")
+                content = takeCommand()
+                to = "yourEmail@gmail.com"    
+                sendEmail(to, content)
+                speak("Email has been sent!")
+            except Exception as e:
+                print(e)
+                speak("Sorry my Client. I am not able to send this email")    
             
     
     
@@ -234,7 +251,7 @@ if __name__ == "__main__":
             speak("User asked to Locate")
             speak(location)
             webbrowser.open("https://www.google.nl / maps / place/" + location + "") 
-            
+    
             
         elif "hit" in query:
             speak('Iniatiating The Hack Control')
@@ -252,7 +269,7 @@ if __name__ == "__main__":
         "What has keys but can't open locks?",
         "What has a heart that doesn't beat?",
         "I am taken from a mine, and shut up in a wooden case, from which I am never released, and yet I am used by almost every person. What am I?"
-        # Add more riddles
+        
 
     ]
               random_riddle = random.choice(riddles)
@@ -262,6 +279,9 @@ if __name__ == "__main__":
         if 'open calculator' in query:
               speak("Opening calculator...")
               os.system("calc")
+              
+              
+        
 
  
 
@@ -312,50 +332,46 @@ def set_reminder(reminder_time, reminder_message):
             speak("I Feel Bad To Hear That From Your Side , Can U Suggest Me Changes On My Github Repo So The Dev Could Solve YYour Issue As Soon As possible To Make You Happy ")
 
 
-   elif 'hey hello brooke' in query:
+    elif 'hey hello brooke' in query:
             speak("Hey Hello From This Side Waiting For Your Command ")
 
 
-   elif 'brooke' in query:
+    elif 'brooke' in query:
             speak(" At Your Assistance Boss ")
  
 
-   elif 'fuck' in query:
+    elif 'fuck' in query:
             speak("I Better Not Answer That")
 
-   elif 'Bitch' in query:
+    elif 'Bitch' in query:
             speak (" I Better Not Answer That")
 
-   elif 'code red' in query:
+    elif 'code red' in query:
             speak("Initianting Force Exit Sir , Any Help Restart Me Always At Your Assistance")
             exit()
 
-   elif 'i am sad beacause of you' in query:
+    elif 'i am sad beacause of you' in query:
             speak(" Sorry Thats Bad To Hear From You Would You Like To Give feedback Please That Helps A Lot")
 
 
-   elif ' hitman activate ' in query:
-           speak(" Activating Hitman Mode Sir , Lets Get In Movement Sir , Wroom Wroom )
+    elif ' hitman activate ' in query:
+           speak(" Activating Hitman Mode Sir , Lets Get In Movement Sir , Wroom Wroom" )
            print("This Is Just An Easter Egg Dont take this as  A serious Act")
 
 
-   elif ' smart pit ' in query:
+    elif ' smart pit ' in query:
           speak (" You Found An Easter Egg , Hatsoff For Your Concentration In The Code Line ")
           print (" ;) CoNgRaTs :-} " )
 
 
-   elif 'mrbeast ' in query:
+    elif 'mrbeast ' in query:
           print (" Money Money More Money 🤑")
           speak("Get Ready To Get A Million Dollars")
    
 
-   elif ' mcdonalds icecream machines suck ' in query:
+    elif ' mcdonalds icecream machines suck ' in query:
           print (" KFC : EmOtIoNaL dAmAgE : > ")
           speak("This Is Only For Pure Fun Not An Act Of Humiliation On Any Company/Brand .")
+          
+   
              
-
-
-                
-                
-                #***************************************** The End **************************************#   
-            
