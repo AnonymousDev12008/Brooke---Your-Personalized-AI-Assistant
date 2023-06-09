@@ -14,7 +14,7 @@ Brooke Version 3.01 is an advanced voice assistant developed using Python. It ut
 - **Jokes**: It can tell jokes to entertain the user.
 - **Image Capture**: Brooke Version 3.01 is capable of capturing images using the device's camera.
 - **System Operations**: The assistant can perform system operations such as shutting down the system or emptying the recycle bin.
-- **Calculator**: It can open the calculator application.
+- **Opening Application's**: It Can Open Up The Caluculator Application And so Many More Applications But There Is A Need Of Customising The Apps location As Intented In The Comments In Code 
 - **Riddles**: The assistant can provide riddles for the user to solve.
 - **Voice Customization**: Users can customize the voice of the assistant by selecting from available voices.
 - **Error Handling**: The assistant handles errors and prompts users to repeat their queries if it fails to recognize them.
